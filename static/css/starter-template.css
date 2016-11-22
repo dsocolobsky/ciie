@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.form-signin {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+table {background-color: white;}
+
+th {text-align:center;}

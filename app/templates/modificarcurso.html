@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="/">CIE</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Blog</a></li>
+                <li><a href="/inscripcion">Inscripcion</a></li>
+                <li><a href="/contactos">Contactos</a></li>
+                <li><a href="/alumnos">Alumnos</a></li>
+                <li><a href="/profesores">Profesores</a></li>
+                <li class="active"><a href="/cursos">Cursos</a></li>
+                <li><a href="/salir">Salir</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <div class="jumbotron">
+            <h2>Modificar Curso</h2>
+            <br>
+            <form class="form-signin" action="/curso/modificar" method="post">
+                <input type="text" id="nombre" name="nombre" class="form-control" value="{{curso.nombre}}" required>
+                <br>
+                <select class="form-control" id="profesor" name="profesor" value="{{curso.profesor}}">
+                    {% for profesor in profesores %}
+                        <option>{{profesor.nombre}} {{profesor.apellido}}</option>
+                    {% endfor %}
+  	            </select>
+                <br>
+                <input type="text" id="puntaje" name="puntaje" class="form-control" value="{{curso.puntaje}}" required>
+                <br>
+                <div id="picker">
+                    <input type="text" name="inicio" class="form-control" value="{{curso.inicio}}">
+                </div>
+                <br>
+                <input type="text" id="horario" name="horario" class="form-control" value="{{curso.horario}}" required>
+                <br>
+                <textarea type="text" id="observaciones" name="observaciones" class="form-control">{{curso.observaciones}}</textarea>
+
+                <br>
+                <br>
+
+                <button id="boton-entrar" class="btn btn-lg btn-info btn-block" type="submit">Modificar</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+{% endblock %}
+
+{% block extra %}
+<script src="../../dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../dist/js/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#picker input').datepicker({
+            format: 'yyyy-mm-dd',
+            language: 'es'
+        });
+    });
+</script>
+
+{% endblock %}

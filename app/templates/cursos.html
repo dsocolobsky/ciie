@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="/">CIE</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Blog</a></li>
+                <li><a href="/inscripcion">Inscripcion</a></li>
+                <li><a href="/contactos">Contactos</a></li>
+                <li><a href="/alumnos">Alumnos</a></li>
+                <li><a href="/profesores">Profesores</a></li>
+                <li class="active"><a href="/cursos">Cursos</a></li>
+                <li><a href="/salir">Salir</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <div class="jumbotron">
+            <h2>Cursos</h2>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Profesor</th>
+                    <th>Fecha Inicio</th>
+                    <th>Horario</th>
+                    <th>Puntaje</th>
+                    <th>Observaciones</th>
+                    <th>Disponible</th>
+                    <th>Acciones</th>
+                    <th><a href="/curso/nuevo"><button type="button pull-right" class="btn btn-success">Agregar</button></a></th>
+                </tr>
+                {% for curso in cursos %}
+                <tr>
+                    <td>{{curso.id}}</td>
+                    <td>{{curso.nombre}}</td>
+                    <td>{{curso.profesor}}</td>
+                    <td>{{curso.inicio}}</td>
+                    <td>{{curso.horario}}</td>
+                    <td>{{curso.puntaje}}</td>
+                    <td>{{curso.observaciones}}</td>
+                    <td>{{curso.disponible}}</td>
+                    <td><a href="/curso/modificar/{{curso.id}}"<button type="button" class="btn btn-info">Modificar</button></a>
+                        <a href="/curso/eliminar/{{curso.id}}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

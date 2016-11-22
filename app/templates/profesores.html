@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="/">CIE</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Blog</a></li>
+                <li><a href="/inscripcion">Inscripcion</a></li>
+                <li><a href="/contactos">Contactos</a></li>
+                <li><a href="/alumnos">Alumnos</a></li>
+                <li class="active"><a href="/profesores">Profesores</a></li>
+                <li><a href="/cursos">Cursos</a></li>
+                <li><a href="/salir">Salir</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <div class="jumbotron">
+            <h2>Profesores</h2>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>DNI</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>E-Mail</th>
+                    <th>Observaciones</th>
+                    <th>Acciones</th>
+                    <th><a href="/profesor/nuevo"><button type="button pull-right" class="btn btn-success">Agregar</button></a></th>
+                </tr>
+                {% for profesor in profesores %}
+                <tr>
+                    <td>{{profesor.dni}}</td>
+                    <td>{{profesor.apellido}}</td>
+                    <td>{{profesor.nombre}}</td>
+                    <td>{{profesor.telefono}}</td>
+                    <td>{{profesor.mail}}</td>
+                    <td>{{profesor.observaciones}}</td>
+                    <td><a href="/profesor/modificar/{{profesor.dni}}"<button type="button" class="btn btn-info">Modificar</button></a>
+                        <a href="/profesor/eliminar/{{profesor.dni}}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
